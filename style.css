@@ -154,11 +154,21 @@ header h1 {
     padding: 0 120px 80px;
 }
 
-.iframe-container iframe {
+.iframe-wrapper {
     width: 100%;
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 1 / 1;
     border: 1px solid #333333;
     border-radius: 30px;
+    overflow: hidden;
+    position: relative;
+}
+
+.iframe-container iframe {
+    width: 133.33%;
+    height: 133.33%;
+    transform: scale(0.75);
+    transform-origin: 0 0;
+    border: none;
 }
 
 /* Footer */
@@ -232,8 +242,8 @@ footer p {
         padding: 0 20px 60px;
     }
 
-    .iframe-container iframe {
-        height: 600px;
+    .iframe-wrapper {
+        aspect-ratio: 1 / 2;
     }
 
     footer {
