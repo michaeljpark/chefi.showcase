@@ -410,10 +410,9 @@ html {
         padding-right: 20px;
     }
 
-    /* Position nav absolutely on the left, overlapping content if needed */
+    /* Hide nav on mobile */
     #side-nav {
-        left: 35px; /* Increased offset from left edge for better visibility */
-        display: block; 
+        display: none; 
     }
 
     .nav-link {
