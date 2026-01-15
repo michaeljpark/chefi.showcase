@@ -80,6 +80,43 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    // Side Navigation Active State
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = [
+        document.getElementById('section-research'),
+        document.getElementById('section-design'),
+        document.getElementById('section-prototyping'),
+        document.getElementById('section-design-pilot')
+    ];
+
+    function updateNavigation() {
+        let current = '';
+        
+        // Find the current section
+        // We iterate and keep updating 'current' as long as we remain "below" the start of the section
+        sections.forEach(section => {
+            if (!section) return;
+            
+            const sectionTop = section.offsetTop;
+            // Trigger slightly before the section hits the top of viewport
+            if (window.pageYOffset >= (sectionTop - window.innerHeight * 0.4)) {
+                current = section.getAttribute('id');
+            }
+        });
+
+        // Loop through links to set active class
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (current && link.getAttribute('href') === `#${current}`) {
+                link.classList.add('active');
+            }
+        });
+    }
+
+    window.addEventListener('scroll', updateNavigation);
+    // Initial call
+    updateNavigation();
+
     // Console log for debugging
     console.log('Design showcase loaded successfully');
     console.log(`Total showcase items: ${showcaseItems.length}`);

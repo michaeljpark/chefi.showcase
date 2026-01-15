@@ -333,3 +333,202 @@ html {
     opacity: 0;
     animation: fadeInUp 0.8s ease-out 1s forwards;
 }
+
+/* Side Navigation */
+#side-nav {
+    position: fixed;
+    top: 50%;
+    left: 60px; /* Center of the roughly 120px left margin area */
+    transform: translate(-50%, -50%); /* Center the block itself */
+    z-index: 1000;
+    width: auto;
+}
+
+#side-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* "Aligned left within the left margin, with equal left/right margins inside that margin"
+   This is tricky. If the "margin" is a column on the left, centering the nav *block* in that column
+   might be what they mean. 
+   If left: 60px is the center of a 120px margin, translateY handles vertical.
+   The text is left aligned. */
+#side-nav li {
+    text-align: left; 
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #666666; /* Inactive: Gray */
+    font-family: 'Source Serif 4', serif; /* Brand font */
+    font-size: 0.7rem; /* Reduced from 0.8rem */
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #999999;
+}
+
+.nav-link.active {
+    color: #ffffff; /* Active: White */
+}
+
+/* Mobile Navigation Adjustments */
+@media (max-width: 768px) {
+    /* Reset padding to be equal (20px) on both sides in mobile.
+       The nav will overlap content on the left side. */
+    header {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    
+    .showcase {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    
+    .iframe-container {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    
+    footer {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    
+    .scroll-slideshow-sticky {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    /* Position nav absolutely on the left, overlapping content if needed */
+    #side-nav {
+        left: 35px; /* Increased offset from left edge for better visibility */
+        display: block; 
+    }
+
+    .nav-link {
+        font-size: 0.45rem; /* Even smaller text for mobile */
+        /* Start with lower opacity to not interfere too much visually */
+        color: rgba(102, 102, 102, 0.5); 
+    }
+    
+    /* Ensure active link is fully visible */
+    .nav-link.active {
+        color: #ffffff;
+    }
+}
+
+ 
+ / *   S i d e   N a v i g a t i o n   * / 
+ 
+ . s i d e - n a v   { 
+ 
+         p o s i t i o n :   f i x e d ; 
+ 
+         t o p :   0 ; 
+ 
+         l e f t :   0 ; 
+ 
+         h e i g h t :   1 0 0 v h ; 
+ 
+         w i d t h :   c a l c ( ( 1 0 0 v w   -   1 6 0 0 p x )   /   2 ) ; 
+ 
+         d i s p l a y :   f l e x ; 
+ 
+         f l e x - d i r e c t i o n :   c o l u m n ; 
+ 
+         j u s t i f y - c o n t e n t :   c e n t e r ; 
+ 
+         a l i g n - i t e m s :   c e n t e r ; 
+ 
+         z - i n d e x :   1 0 0 ; 
+ 
+ } 
+ 
+ 
+ 
+ . n a v - l i s t   { 
+ 
+         l i s t - s t y l e :   n o n e ; 
+ 
+         p a d d i n g :   0 ; 
+ 
+         m a r g i n :   0 ; 
+ 
+         d i s p l a y :   f l e x ; 
+ 
+         f l e x - d i r e c t i o n :   c o l u m n ; 
+ 
+         g a p :   1 . 5 r e m ; 
+ 
+         w i d t h :   f i t - c o n t e n t ;   / *   E n s u r e   t h e   c o n t a i n e r   f i t s   t h e   t e x t   w i d t h   * / 
+ 
+ } 
+ 
+ 
+ 
+ . n a v - l i n k   { 
+ 
+         f o n t - f a m i l y :   ' S o u r c e   S e r i f   4 ' ,   s e r i f ;   / *   B r a n d   f o n t   * / 
+ 
+         f o n t - s i z e :   0 . 8 5 r e m ;   / *   S m a l l   t e x t   * / 
+ 
+         f o n t - w e i g h t :   5 0 0 ; 
+ 
+         c o l o r :   # 6 6 6 6 6 6 ;   / *   I n a c t i v e :   G r a y   * / 
+ 
+         t e x t - d e c o r a t i o n :   n o n e ; 
+ 
+         t e x t - t r a n s f o r m :   u p p e r c a s e ; 
+ 
+         l e t t e r - s p a c i n g :   1 p x ; 
+ 
+         t r a n s i t i o n :   c o l o r   0 . 3 s   e a s e ; 
+ 
+         d i s p l a y :   b l o c k ; 
+ 
+         t e x t - a l i g n :   l e f t ;   / *   T e x t   l e f t   a l i g n e d   * / 
+ 
+ } 
+ 
+ 
+ 
+ . n a v - l i n k . a c t i v e   { 
+ 
+         c o l o r :   # f f f f f f ;   / *   A c t i v e :   W h i t e   * / 
+ 
+ } 
+ 
+ 
+ 
+ . n a v - l i n k : h o v e r   { 
+ 
+         c o l o r :   # a a a a a a ; 
+ 
+ } 
+ 
+ 
+ 
+ / *   H i d e   n a v i g a t i o n   o n   s m a l l e r   s c r e e n s   w h e r e   t h e r e   i s   n o   m a r g i n   * / 
+ 
+ @ m e d i a   ( m a x - w i d t h :   1 7 0 0 p x )   { 
+ 
+         . s i d e - n a v   { 
+ 
+                 d i s p l a y :   n o n e ; 
+ 
+         } 
+ 
+ } 
+ 
+ 
